@@ -21,7 +21,7 @@ model User {
   resetToken          String? // <─┤
   resetTokenExpiresAt DateTime? // <─┘
   events              Event[]
-  EventsOnUsers       EventsOnUsers[]
+  UsersOnEvents       UsersOnEvents[]
 }
 
 model Event {
@@ -33,10 +33,10 @@ model Event {
   capacity      Int?
   author        User            @relation(fields: [authorId], references: [id])
   authorId      Int
-  EventsOnUsers EventsOnUsers[]
+  UsersOnEvents UsersOnEvents[]
 }
 
-model EventsOnUsers {
+model UsersOnEvents {
   event      Event    @relation(fields: [eventId], references: [id])
   eventId    Int
   user       User     @relation(fields: [userId], references: [id])
